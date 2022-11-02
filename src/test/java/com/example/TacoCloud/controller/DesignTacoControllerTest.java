@@ -1,7 +1,6 @@
 package com.example.TacoCloud.controller;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
@@ -23,7 +22,7 @@ class DesignTacoControllerTest {
     @Test
     void showDesignForm() throws Exception {
         mockMvc.perform(get("/design"))
-            .andExpect(status().isOk())
-            .andExpect(view().name("design"));
+               .andExpect(status().isOk())
+               .andExpect(view().name("design"));
     }
 }
