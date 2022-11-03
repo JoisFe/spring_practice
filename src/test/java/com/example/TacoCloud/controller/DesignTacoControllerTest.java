@@ -5,6 +5,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -29,7 +30,9 @@ class DesignTacoControllerTest {
 
     @Test
     void processDesign() throws Exception {
-        mockMvc.perform(post("/design"))
-            .andExpect(status().is3xxRedirection());
+        mockMvc.perform(post("/design")
+                   .param("name", "hahaha")
+                   .param("ingredients", "ha", "haha"))
+               .andExpect(status().is3xxRedirection());
     }
 }
