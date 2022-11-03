@@ -1,5 +1,6 @@
 package com.example.TacoCloud.controller;
 
+import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -9,27 +10,28 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * @author : 조재철
  * @since 1.0
  */
 @WebMvcTest
-class DesignTacoControllerTest {
+class OrderControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    void showDesignForm() throws Exception {
-        mockMvc.perform(get("/design"))
+    void orderForm() throws Exception {
+        mockMvc.perform(get("/orders/current"))
                .andExpect(status().isOk())
-               .andExpect(view().name("design"));
+               .andExpect(view().name("orderForm"));
     }
 
     @Test
-    void processDesign() throws Exception {
-        mockMvc.perform(post("/design"))
+    void processOrder() throws Exception {
+        mockMvc.perform(post("/orders/"))
             .andExpect(status().is3xxRedirection());
     }
 }
