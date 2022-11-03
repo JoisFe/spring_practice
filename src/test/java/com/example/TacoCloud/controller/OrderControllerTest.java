@@ -1,8 +1,8 @@
 package com.example.TacoCloud.controller;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * @author : 조재철
@@ -31,7 +30,23 @@ class OrderControllerTest {
 
     @Test
     void processOrder() throws Exception {
-        mockMvc.perform(post("/orders/"))
-            .andExpect(status().is3xxRedirection());
+        mockMvc.perform(post("/orders")
+                   .param("deliveryName", "haha")
+                   .param("deliveryStreet", "haha")
+                   .param("deliveryCity", "haha")
+                   .param("deliveryState", "haha")
+                   .param("deliveryZip", "haha")
+                   .param("ccNumber", "371449635398431")
+                   .param("ccExpiration", "07/95")
+                   .param("ccCVV", "23"))
+               .andDo(print())
+               .andExpect(status().is3xxRedirection());
+    }
+
+    @Test
+    void processOrderHasValidationError() throws Exception {
+        mockMvc.perform(post("/orders"))
+               .andExpect(status().isOk())
+               .andExpect((view().name("orderForm")));
     }
 }
