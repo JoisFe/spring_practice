@@ -15,7 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
  * @author : 조재철
  * @since 1.0
  */
-@WebMvcTest
+@WebMvcTest(OrderController.class)
 class OrderControllerTest {
 
     @Autowired

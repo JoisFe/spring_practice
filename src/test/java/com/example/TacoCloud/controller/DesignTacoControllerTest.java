@@ -14,7 +14,7 @@ import org.springframework.test.web.servlet.MockMvc;
  * @author : 조재철
  * @since 1.0
  */
-@WebMvcTest
+@WebMvcTest(DesignTacoController.class)
 class DesignTacoControllerTest {
 
     @Autowired
