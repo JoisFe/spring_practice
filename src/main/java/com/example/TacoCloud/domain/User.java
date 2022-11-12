@@ -18,7 +18,7 @@ import org.springframework.security.core.userdetails.UserDetails;
  * @since 1.0
  */
 @Entity
-@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @RequiredArgsConstructor
 public class User implements UserDetails {
 
