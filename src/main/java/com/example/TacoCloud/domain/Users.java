@@ -20,7 +20,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @RequiredArgsConstructor
-public class User implements UserDetails {
+public class Users implements UserDetails {
 
     private static final long serialVersionUid = 1L;
 

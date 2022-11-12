@@ -1,6 +1,6 @@
 package com.example.TacoCloud.service;
 
-import com.example.TacoCloud.domain.User;
+import com.example.TacoCloud.domain.Users;
 import com.example.TacoCloud.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,10 +22,10 @@ public class UserRepositoryUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepo.findByUsername(username);
+        Users users = userRepo.findByUsername(username);
 
-        if (user != null) {
-            return user;
+        if (users != null) {
+            return users;
         }
 
         throw new UsernameNotFoundException("User '" + username + "' not found");
