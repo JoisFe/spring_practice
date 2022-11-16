@@ -1,13 +1,16 @@
 package com.example.TacoCloud.controller;
 
 import com.example.TacoCloud.domain.Order;
+import com.example.TacoCloud.domain.Users;
 import com.example.TacoCloud.repository.OrderRepository;
 import javax.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -31,15 +34,35 @@ public class OrderController {
     }
 
     @GetMapping("/current")
-    public String orderForm() {
+    public String orderForm(@AuthenticationPrincipal Users users,
+        @ModelAttribute Order order) {
+        if (order.getDeliveryName() == null) {
+            order.setDeliveryName(users.getFullname());
+        }
+        if (order.getDeliveryStreet() == null) {
+            order.setDeliveryStreet(users.getStreet());
+        }
+        if (order.getDeliveryCity() == null) {
+            order.setDeliveryCity(users.getCity());
+        }
+        if (order.getDeliveryState() == null) {
+            order.setDeliveryState(users.getState());
+        }
+        if (order.getDeliveryZip() == null) {
+            order.setDeliveryZip(users.getZip());
+        }
+
         return "orderForm";
     }
 
     @PostMapping
-    public String processOrder(@Valid Order order, Errors errors, SessionStatus sessionStatus) {
+    public String processOrder(@Valid Order order, Errors errors, SessionStatus sessionStatus, @AuthenticationPrincipal
+        Users users) {
         if (errors.hasErrors()) {
             return "orderForm";
         }
+
+        order.setUsers(users);
 
         orderRepo.save(order);
         sessionStatus.setComplete();
