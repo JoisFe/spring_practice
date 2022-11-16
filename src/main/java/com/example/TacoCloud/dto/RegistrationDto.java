@@ -4,12 +4,14 @@ import com.example.TacoCloud.domain.Users;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  * @author : 조재철
  * @since 1.0
  */
+@Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor

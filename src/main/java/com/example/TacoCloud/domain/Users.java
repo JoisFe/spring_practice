@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -17,9 +18,10 @@ import org.springframework.security.core.userdetails.UserDetails;
  * @author : 조재철
  * @since 1.0
  */
-@Entity
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @RequiredArgsConstructor
+@Entity
 public class Users implements UserDetails {
 
     private static final long serialVersionUid = 1L;
