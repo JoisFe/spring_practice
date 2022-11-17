@@ -1,0 +1,19 @@
+{
+  "groups": [
+    {
+      "name": "taco.orders",
+      "type": "com.example.TacoCloud.config.web.OrderProps",
+      "sourceType": "com.example.TacoCloud.config.web.OrderProps"
+    }
+  ],
+  "properties": [
+    {
+      "name": "taco.orders.page-size",
+      "type": "java.lang.Integer",
+      "description": "Sets the maximum number of orders to display in a list.",
+      "sourceType": "com.example.TacoCloud.config.web.OrderProps",
+      "defaultValue": 20
+    }
+  ],
+  "hints": []
+}

@@ -3,3 +3,7 @@ spring:
     cache: false
   datasource:
     url: jdbc:h2:mem:testdb
+
+taco:
+  orders:
+    pageSize: 10
